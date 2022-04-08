@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "datagendemo:block/block_demo"
+    }
+  }
+}
