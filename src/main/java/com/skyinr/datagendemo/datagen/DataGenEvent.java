@@ -20,6 +20,8 @@ public class DataGenEvent {
                     DataGenDemo.MODID, helper, ModBlocks.BLOCKS));
             event.getGenerator().addProvider(new ModItemModelProvider(event.getGenerator(),
                     DataGenDemo.MODID, helper, ModItems.ITEMS));
+            event.getGenerator().addProvider(new ModLanguageProvider(event.getGenerator(),
+                    DataGenDemo.MODID, "en_us"));
         }
         if (event.includeServer()) {
             //recipes,advancements,tags...
