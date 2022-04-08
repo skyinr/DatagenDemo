@@ -13,10 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ModItemModelProvider extends ItemModelProvider {
@@ -47,7 +44,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     protected void skipItems(Item... items) {
-        skipItems.addAll(Arrays.asList(items));
+        Collections.addAll(skipItems, items);
     }
 
     protected void skipItems(Collection<? extends Item> items) {

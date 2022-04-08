@@ -2,6 +2,7 @@ package com.skyinr.datagendemo.datagen;
 
 import com.skyinr.datagendemo.DataGenDemo;
 import com.skyinr.datagendemo.block.ModBlocks;
+import com.skyinr.datagendemo.datagen.loottable.ModLootTableProvider;
 import com.skyinr.datagendemo.item.ModItems;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,6 +23,8 @@ public class DataGenEvent {
         }
         if (event.includeServer()) {
             //recipes,advancements,tags...
+            event.getGenerator().addProvider(new ModLootTableProvider(event.getGenerator(),
+                    DataGenDemo.MODID));
         }
     }
 }
