@@ -4,3 +4,5 @@ f092e39ea91a8f37aa0fa794e77484dc97302b5e assets/datagendemo/lang/en_us.json
 b204e0e3afd233ab3780f36ffd83920ce32251ab assets/datagendemo/models/item/block_demo.json
 737028953dbabdce8bc4750b058337b731597426 assets/datagendemo/models/item/item_demo.json
 c5b09d03818477256ecc0465f43357a3dc9544a3 data/datagendemo/loot_tables/blocks/block_demo.json
+d8779617db4be16fde185aab29a64f008dd9a62d reports/worldgen/datagendemo/worldgen/biome/biome_demo.json
+a9fc98af63ef2489ebdd8cbcc7bb1bdb9c5b38ec reports/worldgen/datagendemo/worldgen/noise/noise_parameters_demo.json

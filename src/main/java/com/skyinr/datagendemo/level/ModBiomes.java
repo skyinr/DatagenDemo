@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModBiomes {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, DataGenDemo.MODID);
 
-    public static final RegistryObject<Biome> DEMO_BIOME = BIOMES.register("demo_biome", () -> new Biome.BiomeBuilder()
+    public static final RegistryObject<Biome> BIOME_DEMO = BIOMES.register("biome_demo", () -> new Biome.BiomeBuilder()
             .precipitation(Biome.Precipitation.NONE)
             .biomeCategory(Biome.BiomeCategory.JUNGLE)
             .temperature(0.8F)

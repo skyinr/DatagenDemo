@@ -12,7 +12,7 @@
     "misc": []
   },
   "spawn_costs": {},
-  "forge:registry_name": "datagendemo:demo_biome",
+  "forge:registry_name": "datagendemo:biome_demo",
   "precipitation": "none",
   "temperature": 0.8,
   "downfall": 0.4,
