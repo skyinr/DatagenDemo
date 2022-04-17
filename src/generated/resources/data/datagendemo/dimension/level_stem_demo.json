@@ -1,0 +1,28 @@
+{
+  "type": {
+    "logical_height": 256,
+    "infiniburn": "#minecraft:infiniburn_overworld",
+    "effects": "minecraft:overworld",
+    "ambient_light": 0.0,
+    "respawn_anchor_works": true,
+    "has_raids": true,
+    "min_y": -64,
+    "height": 256,
+    "natural": true,
+    "coordinate_scale": 1.0,
+    "piglin_safe": true,
+    "bed_works": false,
+    "has_skylight": true,
+    "has_ceiling": false,
+    "ultrawarm": false
+  },
+  "generator": {
+    "biome_source": {
+      "biome": "datagendemo:biome_demo",
+      "type": "minecraft:fixed"
+    },
+    "seed": 0,
+    "settings": "datagendemo:noise_generator_settings_demo",
+    "type": "minecraft:noise"
+  }
+}

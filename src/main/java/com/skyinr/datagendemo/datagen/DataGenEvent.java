@@ -27,6 +27,7 @@ public class DataGenEvent {
             //recipes,advancements,tags...
             event.getGenerator().addProvider(new ModLootTableProvider(event.getGenerator(),
                     DataGenDemo.MODID));
+            event.getGenerator().addProvider(new ModWorldgenProvider(event.getGenerator()));
         }
     }
 }
