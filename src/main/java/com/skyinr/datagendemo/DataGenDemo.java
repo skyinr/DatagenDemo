@@ -32,22 +32,9 @@ public class DataGenDemo {
     }
 
     private static void registerLevel(){
-        ModConfiguredStructureFeatures.FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ModDimensionTypes.DEFERREDS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModNoisesParameters.NOISE_PARAMETERS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModStructureSets.STRUCTURE_SETS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ModLevelStems.LEVEL_STEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModNoiseGeneratorSettings.NOISE_GENERATOR_SETTINGS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ModLevels.LEVELS.register(FMLJavaModLoadingContext.get().getModEventBus());
-
-        ModWorldgenProvider.deferredRegisters.put(ModBiomes.BIOMES, Biome.DIRECT_CODEC);
-        ModWorldgenProvider.deferredRegisters.put(ModConfiguredStructureFeatures.FEATURES, ConfiguredStructureFeature.DIRECT_CODEC);
-        ModWorldgenProvider.deferredRegisters.put(ModDimensionTypes.DEFERREDS, DimensionType.DIRECT_CODEC);
-        ModWorldgenProvider.deferredRegisters.put(ModNoisesParameters.NOISE_PARAMETERS, NormalNoise.NoiseParameters.DIRECT_CODEC);
-        ModWorldgenProvider.deferredRegisters.put(ModStructureSets.STRUCTURE_SETS, StructureSet.DIRECT_CODEC);
-//        ModWorldgenProvider.deferredRegisters.put(ModLevelStems.LEVEL_STEMS, LevelStem.CODEC);
-        ModWorldgenProvider.deferredRegisters.put(ModNoiseGeneratorSettings.NOISE_GENERATOR_SETTINGS, NoiseGeneratorSettings.DIRECT_CODEC);
-//        ModWorldgenProvider.deferredRegisters.put(ModLevels.LEVELS, Level.RESOURCE_KEY_CODEC);
 
 //        ModNoiseBasedChunkGenerators.NOISE_BASED_CHUNK_GENERATORS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }

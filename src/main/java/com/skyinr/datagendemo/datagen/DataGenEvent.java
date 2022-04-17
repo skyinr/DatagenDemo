@@ -29,6 +29,5 @@ public class DataGenEvent {
                     DataGenDemo.MODID));
             event.getGenerator().addProvider(new ModWorldgenProvider(event.getGenerator()));
         }
-
     }
 }

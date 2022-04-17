@@ -1,18 +1,12 @@
 package com.skyinr.datagendemo.level;
 
-import com.skyinr.datagendemo.DataGenDemo;
-import net.minecraft.core.Registry;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.OptionalLong;
 
 public class ModDimensionTypes {
-    public static final DeferredRegister<DimensionType> DEFERREDS = DeferredRegister.createOptional(Registry.DIMENSION_TYPE_REGISTRY, DataGenDemo.MODID);
-
-    public static final RegistryObject<DimensionType> DIMENSION_TYPE_DEMO = DEFERREDS.register("dimension_type_demo", () -> DimensionType.create(
+    public static final DimensionType dimensionType = DimensionType.create(
             OptionalLong.empty(),
             true,
             false,
@@ -30,5 +24,5 @@ public class ModDimensionTypes {
             BlockTags.INFINIBURN_OVERWORLD,
             DimensionType.OVERWORLD_EFFECTS,
             0.0F
-    ));
+    );
 }
