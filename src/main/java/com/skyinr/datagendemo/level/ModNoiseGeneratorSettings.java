@@ -24,7 +24,7 @@ public class ModNoiseGeneratorSettings {
             //使用了AT
             NoiseRouterData.overworldWithNewCaves(MODNoiseSettings.getNoiseSettings(), true),
             SurfaceRuleData.overworld(),
-            0,
+            16,
             false,
             true,
             true,

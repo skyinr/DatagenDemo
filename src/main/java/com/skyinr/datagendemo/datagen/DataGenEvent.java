@@ -3,6 +3,7 @@ package com.skyinr.datagendemo.datagen;
 import com.skyinr.datagendemo.DataGenDemo;
 import com.skyinr.datagendemo.block.ModBlocks;
 import com.skyinr.datagendemo.datagen.loottable.ModLootTableProvider;
+import com.skyinr.datagendemo.datagen.tags.ModBlockTagsProvider;
 import com.skyinr.datagendemo.item.ModItems;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -28,6 +29,8 @@ public class DataGenEvent {
             event.getGenerator().addProvider(new ModLootTableProvider(event.getGenerator(),
                     DataGenDemo.MODID));
             event.getGenerator().addProvider(new ModWorldgenProvider(event.getGenerator()));
+            event.getGenerator().addProvider(new ModBlockTagsProvider(event.getGenerator(),
+                    helper));
         }
     }
 }

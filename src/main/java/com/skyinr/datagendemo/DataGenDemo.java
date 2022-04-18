@@ -35,7 +35,7 @@ public class DataGenDemo {
         ModNoisesParameters.NOISE_PARAMETERS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModStructureSets.STRUCTURE_SETS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModNoiseGeneratorSettings.NOISE_GENERATOR_SETTINGS.register(FMLJavaModLoadingContext.get().getModEventBus());
-
+//        ModDimensionTypes.DIMENSION_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
 //        ModNoiseBasedChunkGenerators.NOISE_BASED_CHUNK_GENERATORS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 

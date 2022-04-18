@@ -17,6 +17,7 @@ import net.minecraft.data.HashCache;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import org.slf4j.Logger;
 
@@ -40,10 +41,8 @@ public class ModWorldgenProvider implements DataProvider {
         RegistryAccess registryaccess = RegistryAccess.BUILTIN.get();
         DynamicOps<JsonElement> dynamicops = RegistryOps.create(JsonOps.INSTANCE, registryaccess);
 
-        Registry<LevelStem> dimensionRegistry = this.registryDimension();
-        RegistryAccess.knownRegistries().forEach((registryData) -> {
-            dumpRegistryCap(cache, path, registryaccess, dynamicops, registryData);
-        });
+        Registry<LevelStem> dimensionRegistry = this.registryDimension(registryaccess);
+        RegistryAccess.knownRegistries().forEach((registryData) -> dumpRegistryCap(cache, path, registryaccess, dynamicops, registryData));
         dumpRegistry(path, cache, dynamicops, Registry.LEVEL_STEM_REGISTRY, dimensionRegistry, LevelStem.CODEC);
 
     }
@@ -52,15 +51,16 @@ public class ModWorldgenProvider implements DataProvider {
         dumpRegistry(path, cache, dynamicops, registryData.key(), registryaccess.ownedRegistryOrThrow(registryData.key()), registryData.codec());
     }
 
-    private Registry<LevelStem> registryDimension() {
-        WritableRegistry<LevelStem> writableregistry = new MappedRegistry<>(Registry.LEVEL_STEM_REGISTRY, Lifecycle.experimental(), null);
+    private Registry<LevelStem> registryDimension(RegistryAccess registryaccess) {
+        WritableRegistry<LevelStem> writableregistry = new MappedRegistry<>(Registry.LEVEL_STEM_REGISTRY, Lifecycle.stable(), null);
 
         writableregistry.register(ResourceKey.create(Registry.LEVEL_STEM_REGISTRY,
                         DataGenDemo.modLoc("level_stem_demo")),
                 new LevelStem(
-                        Holder.direct(ModDimensionTypes.dimensionType),
+                        registryaccess.ownedRegistryOrThrow(Registry.DIMENSION_TYPE_REGISTRY)
+                                .getHolderOrThrow(DimensionType.OVERWORLD_LOCATION),
                         ModNoiseBasedChunkGenerator.forestChunkGen)
-                , Lifecycle.experimental());
+                , Lifecycle.stable());
         return writableregistry;
     }
 
@@ -88,8 +88,8 @@ public class ModWorldgenProvider implements DataProvider {
 
     }
 
-    private static Path createPath(Path path, ResourceLocation resourceLocation, ResourceLocation resourceLocation1) {
-        return resolveTopPath(path).resolve(resourceLocation1.getNamespace()).resolve(resourceLocation.getPath()).resolve(resourceLocation1.getPath() + ".json");
+    private static Path createPath(Path path, ResourceLocation location, ResourceLocation value) {
+        return resolveTopPath(path).resolve(value.getNamespace()).resolve(location.getPath()).resolve(value.getPath() + ".json");
     }
 
     protected static Path resolveTopPath(Path path) {
