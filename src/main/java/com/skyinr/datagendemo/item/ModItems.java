@@ -14,7 +14,9 @@ import org.jetbrains.annotations.NotNull;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DataGenDemo.MODID);
 
-    public static final RegistryObject<Item> ITEM_DEMO = ITEMS.register("item_demo", () -> new Item(getDefaultProperties()));
+    public static Item.Properties getDefaultProperties() {
+        return new Item.Properties().tab(ModTab);
+    }    public static final RegistryObject<Item> ITEM_DEMO = ITEMS.register("item_demo", () -> new Item(getDefaultProperties()));
 
     public static final RegistryObject<Item> BLOCK_DEMO = ITEMS.register("block_demo", () -> new BlockItem(ModBlocks.BLOCK_DEMO.get(), getDefaultProperties()));
 
@@ -26,7 +28,5 @@ public class ModItems {
         }
     };
 
-    public static Item.Properties getDefaultProperties() {
-        return new Item.Properties().tab(ModTab);
-    }
+
 }

@@ -13,20 +13,25 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public static final ResourceLocation GENERATED = new ResourceLocation("item/generated");
     public static final ResourceLocation HANDHELD = new ResourceLocation("item/handheld");
-
-    protected Set<Item> skipItems = new HashSet<>();
-
     private final DeferredRegister<? extends Item> deferredRegister;
+    protected Set<Item> skipItems = new HashSet<>();
 
     public ModItemModelProvider(DataGenerator generator, String modid, ExistingFileHelper existingFileHelper, DeferredRegister<? extends Item> deferredRegister) {
         super(generator, modid, existingFileHelper);
         this.deferredRegister = deferredRegister;
+    }
+
+    private static String name(Item item) {
+        return ForgeRegistries.ITEMS.getKey(item).getPath();
     }
 
     @Override
@@ -84,9 +89,5 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private ItemModelBuilder handheldItem(Item item) {
         return handheldItem(name(item));
-    }
-
-    private static String name(Item item) {
-        return ForgeRegistries.ITEMS.getKey(item).getPath();
     }
 }

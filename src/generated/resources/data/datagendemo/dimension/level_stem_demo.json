@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:overworld",
+  "type": "datagendemo:skyinr_dimension",
   "generator": {
     "biome_source": {
       "biome": "datagendemo:biome_demo",
@@ -8,5 +8,6 @@
     "seed": 0,
     "settings": "datagendemo:noise_generator_settings_demo",
     "type": "minecraft:noise"
-  }
+  },
+  "forge:use_server_seed": true
 }

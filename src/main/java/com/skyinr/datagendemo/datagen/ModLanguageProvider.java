@@ -21,7 +21,7 @@ public class ModLanguageProvider extends LanguageProvider {
                     .filter(block -> modID.equals(Registry.BLOCK.getKey(block).getNamespace()))
                     .forEach(block -> addBlock(() -> block, block.getRegistryName().getPath()));
             Registry.ITEM.stream()
-                    .filter(item -> modID.equals(Registry.ITEM.getKey(item).getNamespace())&&!(item instanceof BlockItem))
+                    .filter(item -> modID.equals(Registry.ITEM.getKey(item).getNamespace()) && !(item instanceof BlockItem))
                     .forEach(item -> addItem(() -> item, item.getRegistryName().getPath()));
             Registry.ENCHANTMENT.stream()
                     .filter(enchantment -> modID.equals(Registry.ENCHANTMENT.getKey(enchantment).getNamespace()))
