@@ -42,12 +42,7 @@ public class ModBlockLootProvider extends BlockLoot {
             if (skipBlocks.contains(block)) {
                 continue;
             }
-            add(block, LootTable.lootTable().withPool(applyExplosionDecay(block, LootPool.lootPool()
-                            .name("main")
-                            .setRolls(ConstantValue.exactly(1))
-                            .add(LootItem.lootTableItem(block))
-                    ))
-            );
+            add(block, createSingleItemTable(block));
         }
     }
 

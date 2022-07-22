@@ -10,7 +10,7 @@ public class ModNoiseBasedChunkGenerator {
     public static NoiseBasedChunkGenerator forestChunkGen =
             new NoiseBasedChunkGenerator(
                     registryaccess.registryOrThrow(Registry.STRUCTURE_SET_REGISTRY),
-                    ModNoisesParameters.NOISE_PARAMETERS_REGISTRY,
+                    registryaccess.registryOrThrow(Registry.NOISE_REGISTRY),
                     new FixedBiomeSource(ModBiomes.BIOME_HOLDER),
                     0L,
                     ModNoiseGeneratorSettings.NOISE_GENERATOR_SETTINGS_DEMO_HOLDER

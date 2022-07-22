@@ -31,6 +31,7 @@ public class DataGenEvent {
             event.getGenerator().addProvider(new ModWorldgenProvider(event.getGenerator()));
             event.getGenerator().addProvider(new ModBlockTagsProvider(event.getGenerator(),
                     helper));
+            event.getGenerator().addProvider(new ModRecipeProvider(event.getGenerator()));
         }
     }
 }

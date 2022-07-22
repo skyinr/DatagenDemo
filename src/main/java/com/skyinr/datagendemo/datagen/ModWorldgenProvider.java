@@ -10,21 +10,23 @@ import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.Lifecycle;
 import com.skyinr.datagendemo.DataGenDemo;
 import com.skyinr.datagendemo.level.*;
-import net.minecraft.core.MappedRegistry;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.WritableRegistry;
+import net.minecraft.core.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
+import net.minecraft.nbt.TagTypes;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.Tag;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -82,7 +84,7 @@ public class ModWorldgenProvider implements DataProvider {
     public void run(HashCache cache) {
         Path path = this.generator.getOutputFolder();
         DynamicOps<JsonElement> dynamicops = RegistryOps.create(JsonOps.INSTANCE, registrable);
-        Registry<LevelStem> dimensionRegistry = this.registryDimension(registrable);
+        Registry<LevelStem> dimensionRegistry = this.registryDimension();
         dumpRegistry(path, cache, dynamicops, Registry.DIMENSION_TYPE_REGISTRY, ModDimensionTypes.DIMENSION_TYPE_REGISTRY, DimensionType.DIRECT_CODEC);
         dumpRegistry(path, cache, dynamicops, Registry.BIOME_REGISTRY, ModBiomes.BIOME_REGISTRY, Biome.DIRECT_CODEC);
         dumpRegistry(path, cache, dynamicops, Registry.NOISE_REGISTRY, ModNoisesParameters.NOISE_PARAMETERS_REGISTRY, NormalNoise.NoiseParameters.DIRECT_CODEC);
@@ -92,14 +94,15 @@ public class ModWorldgenProvider implements DataProvider {
 
     }
 
-    private Registry<LevelStem> registryDimension(RegistryAccess registryaccess) {
+    private Registry<LevelStem> registryDimension() {
         WritableRegistry<LevelStem> writableregistry = new MappedRegistry<>(Registry.LEVEL_STEM_REGISTRY, Lifecycle.stable(), null);
 
         writableregistry.register(ResourceKey.create(Registry.LEVEL_STEM_REGISTRY,
                         DataGenDemo.modLoc("level_stem_demo")),
                 new LevelStem(
                         ModDimensionTypes.DIMENSION_TYPE_HOLDER,
-                        ModNoiseBasedChunkGenerator.forestChunkGen, true)
+                        ModNoiseBasedChunkGenerator.forestChunkGen,
+                        true)
                 , Lifecycle.stable());
         return writableregistry;
     }
