@@ -1,12 +1,11 @@
 package com.skyinr.datagendemo.datagen.loottable;
 
-import net.minecraft.core.Registry;
-import net.minecraft.data.loot.BlockLoot;
+import com.skyinr.datagendemo.DataGenDemo;
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -14,13 +13,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class ModBlockLootProvider extends BlockLoot {
-    private final String modID;
+public class ModBlockLootProvider extends BlockLootSubProvider {
     private final Set<Block> skipBlocks = new HashSet<>();
 
-    public ModBlockLootProvider(String modid, Block... blocks) {
-        this.modID = modid;
-        skip(blocks);
+    public ModBlockLootProvider() {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
 
     @Override
@@ -47,9 +44,9 @@ public class ModBlockLootProvider extends BlockLoot {
     }
 
     @Override
-    protected void addTables() {
-        dropSelfWithContents(Registry.BLOCK.stream()
-                .filter(block -> modID.equals(Registry.BLOCK.getKey(block).getNamespace()))
+    protected void generate() {
+        dropSelfWithContents(ForgeRegistries.BLOCKS.getValues().stream()
+                .filter(block -> DataGenDemo.MODID.equals(ForgeRegistries.BLOCKS.getKey(block).getNamespace()))
                 .collect(Collectors.toSet()));
     }
 

@@ -1,0 +1,11 @@
+{
+  "type": "datagendemo:skyinr_dimension",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "datagendemo:biome_demo"
+    },
+    "settings": "datagendemo:noise_generator_settings_demo"
+  }
+}

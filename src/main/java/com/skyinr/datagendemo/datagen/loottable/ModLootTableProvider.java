@@ -1,51 +1,21 @@
 package com.skyinr.datagendemo.datagen.loottable;
 
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class ModLootTableProvider extends LootTableProvider {
-    protected final String modid;
 
-    public ModLootTableProvider(DataGenerator pGenerator, String modid) {
-        super(pGenerator);
-        this.modid = modid;
-    }
-
-    @NotNull
-    @Override
-    public String getName() {
-        return super.getName() + ":" + modid;
-    }
-
-    protected BlockLoot getBlockLootTable() {
-        return new ModBlockLootProvider(modid);
-    }
-
-    @Nonnull
-    @Override
-    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
-        ImmutableList.Builder<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> builder = new ImmutableList.Builder<>();
-        BlockLoot blockLootTable = getBlockLootTable();
-        if (blockLootTable != null) {
-            builder.add(Pair.of(() -> blockLootTable, LootContextParamSets.BLOCK));
-        }
-        return builder.build();
+    public ModLootTableProvider(PackOutput output) {
+        super(output, BuiltInLootTables.all(), List.of(
+                new SubProviderEntry(ModBlockLootProvider::new, LootContextParamSets.BLOCK)));
     }
 
     @Override

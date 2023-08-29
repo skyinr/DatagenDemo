@@ -1,6 +1,6 @@
 package com.skyinr.datagendemo.datagen;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -25,8 +25,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected final DeferredRegister<? extends Item> deferredRegister;
     protected Set<Item> skipItems = new HashSet<>();
 
-    public ModItemModelProvider(DataGenerator generator, String modid, ExistingFileHelper existingFileHelper, DeferredRegister<? extends Item> deferredRegister) {
-        super(generator, modid, existingFileHelper);
+    public ModItemModelProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper, DeferredRegister<? extends Item> deferredRegister) {
+        super(output, modid, existingFileHelper);
         this.deferredRegister = deferredRegister;
     }
 

@@ -1,6 +1,6 @@
 package com.skyinr.datagendemo.datagen;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -17,8 +17,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private final DeferredRegister<? extends Block> deferredRegister;
     private final Set<Block> skipBlocks = new HashSet<>();
 
-    public ModBlockStateProvider(DataGenerator gen, String modid, ExistingFileHelper exFileHelper, DeferredRegister<? extends Block> deferredRegister) {
-        super(gen, modid, exFileHelper);
+    public ModBlockStateProvider(PackOutput output, String modid, ExistingFileHelper exFileHelper, DeferredRegister<? extends Block> deferredRegister) {
+        super(output, modid, exFileHelper);
         this.deferredRegister = deferredRegister;
     }
 

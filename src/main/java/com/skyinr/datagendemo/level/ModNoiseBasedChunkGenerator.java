@@ -1,18 +1,14 @@
 package com.skyinr.datagendemo.level;
 
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.world.level.biome.FixedBiomeSource;
+import net.minecraft.core.Holder;
+import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
+import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 
 public class ModNoiseBasedChunkGenerator {
-    private static final RegistryAccess registryaccess = RegistryAccess.BUILTIN.get();
-    public static NoiseBasedChunkGenerator forestChunkGen =
-            new NoiseBasedChunkGenerator(
-                    registryaccess.registryOrThrow(Registry.STRUCTURE_SET_REGISTRY),
-                    registryaccess.registryOrThrow(Registry.NOISE_REGISTRY),
-                    new FixedBiomeSource(ModBiomes.BIOME_HOLDER),
-                    0L,
-                    ModNoiseGeneratorSettings.NOISE_GENERATOR_SETTINGS_DEMO_HOLDER
-            );
+    public static NoiseBasedChunkGenerator createDemoChunkGen(BiomeSource biomeSource, Holder<NoiseGeneratorSettings> holder) {
+        return new NoiseBasedChunkGenerator(
+                biomeSource,
+                holder);
+    }
 }

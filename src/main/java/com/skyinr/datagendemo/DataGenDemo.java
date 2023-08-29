@@ -2,7 +2,6 @@ package com.skyinr.datagendemo;
 
 import com.skyinr.datagendemo.block.ModBlocks;
 import com.skyinr.datagendemo.item.ModItems;
-import com.skyinr.datagendemo.level.ModBiomes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -18,7 +17,7 @@ public class DataGenDemo {
         MinecraftForge.EVENT_BUS.register(this);
         ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ModBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModItems.ModTabs.TABS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     public static ResourceLocation modLoc(String path) {
