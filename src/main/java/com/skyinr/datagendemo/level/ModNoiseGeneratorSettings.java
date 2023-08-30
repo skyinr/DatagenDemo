@@ -18,7 +18,7 @@ public class ModNoiseGeneratorSettings {
                 ModNoiseSettings.NOISE_SETTINGS_DEMO,
                 ModBlocks.BLOCK_DEMO.get().defaultBlockState(),
                 Blocks.WATER.defaultBlockState(),
-                ModNoiseRouterWithOnlyNoises.createDemoNoiseRouter(context.lookup(Registries.NOISE)),
+                ModNoiseRouter.createDemoNoiseRouter(context.lookup(Registries.NOISE)),
                 SurfaceRuleData.overworld(),
                 (new OverworldBiomeBuilder()).spawnTarget(),
                 64,

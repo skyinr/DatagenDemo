@@ -6,7 +6,7 @@ import net.minecraft.world.level.levelgen.NoiseRouter;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
-public class ModNoiseRouterWithOnlyNoises {
+public class ModNoiseRouter {
     public static NoiseRouter createDemoNoiseRouter(HolderGetter<NormalNoise.NoiseParameters> getter) {
         return new NoiseRouter(
                 DensityFunctions.noise(getter.getOrThrow(Noises.AQUIFER_BARRIER), 0.5D),
