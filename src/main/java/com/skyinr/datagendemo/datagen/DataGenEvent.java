@@ -1,7 +1,6 @@
 package com.skyinr.datagendemo.datagen;
 
 import com.skyinr.datagendemo.DataGenDemo;
-import com.skyinr.datagendemo.block.ModBlocks;
 import com.skyinr.datagendemo.datagen.loottable.ModLootTableProvider;
 import com.skyinr.datagendemo.datagen.tags.ModBlockTagsProvider;
 import com.skyinr.datagendemo.item.ModItems;
@@ -18,7 +17,7 @@ public class DataGenEvent {
         if (event.includeClient()) {
             //block/item models, blockstates, language files...
             event.getGenerator().addProvider(new ModBlockStateProvider(event.getGenerator(),
-                    DataGenDemo.MODID, helper, ModBlocks.BLOCKS));
+                    DataGenDemo.MODID, helper));
             event.getGenerator().addProvider(new ModItemModelProvider(event.getGenerator(),
                     DataGenDemo.MODID, helper, ModItems.ITEMS));
             event.getGenerator().addProvider(new ModLanguageProvider(event.getGenerator(),
